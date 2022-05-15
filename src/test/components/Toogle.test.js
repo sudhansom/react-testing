@@ -34,4 +34,12 @@ it("changes vale on click", () => {
   });
   expect(onChange).toHaveBeenCalledTimes(1);
   expect(button.innerHTML).toBe("Turn off");
+
+  act(() => {
+    for (let i = 0; i < 3; i++) {
+      button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    }
+  });
+  expect(onChange).toHaveBeenCalledTimes(4);
+  expect(button.innerHTML).toBe("Turn on");
 });
