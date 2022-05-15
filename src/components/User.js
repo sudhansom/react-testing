@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export default function User({ id }) {
+export default function User({ url }) {
   const [user, setUser] = useState(null);
 
-  async function fetchUserData(id) {
-    const response = await fetch("/" + id);
-    setUser(await response.json());
+  async function fetchUserData(url) {
+    try {
+      const response = await fetch(url);
+
+      setUser(await response.json());
+    } catch (err) {
+      console.log("error occured.", { cause: err });
+    }
   }
 
   useEffect(() => {
-    fetchUserData(id);
-  }, [id]);
+    fetchUserData(url);
+  }, [url]);
 
   if (!user) {
     return "loading...";
@@ -19,9 +25,9 @@ export default function User({ id }) {
   return (
     <details>
       <summary>{user.name}</summary>
-      <strong>{user.age}</strong>
+      <strong>{user.company}</strong>
       <br />
-      lives in {user.address}
+      followers: {user.followers}
     </details>
   );
 }
