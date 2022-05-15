@@ -36,3 +36,23 @@ it("should select null after timing out", () => {
   });
   expect(onSelect).toHaveBeenCalledWith(null);
 });
+
+it("should cleanup on being removed", () => {
+  const onSelect = jest.fn();
+  act(() => {
+    render(<Timer onSelect={onSelect} />, container);
+  });
+  act(() => {
+    jest.advanceTimersByTime(100);
+  });
+  expect(onSelect).not.toHaveBeenCalled();
+
+  // unmount the component
+  act(() => {
+    render(null, container);
+  });
+  act(() => {
+    jest.advanceTimersByTime(2000);
+  });
+  expect(onSelect).not.toHaveBeenCalled();
+});
