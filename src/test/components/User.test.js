@@ -35,7 +35,8 @@ it("renders user data", async () => {
   });
 
   expect(container.querySelector("summary").textContent).toBe(fakeUser.name);
-
+  expect(container.querySelector("strong").textContent).toBe(fakeUser.company);
+  expect(container.textContent).toContain(fakeUser.followers.toString());
   // remove the mock to ensure tests are completely isolated
   global.fetch.mockRestore();
 });
