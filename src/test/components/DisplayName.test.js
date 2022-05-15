@@ -1,6 +1,5 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
-import { fireEvent, screen, getByTestId } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
 import DisplayName from "../../components/DisplayName";
@@ -29,9 +28,4 @@ it("renders with or without a name", () => {
     render(<DisplayName />, container);
   });
   expect(container.textContent).toBe("Hey, who are you??");
-
-  act(() => {
-    render(<DisplayName userName={"Rhythm"} />, container);
-  });
-  expect(container.textContent).toBe("Hello, Rhythm");
 });
