@@ -1,9 +1,10 @@
 import "./App.css";
+import DisplayName from "./components/DisplayName";
 
 function App() {
   return (
     <div className="App">
-      <h1> Testing Practice...</h1>
+      <DisplayName userName="sudhan" />
     </div>
   );
 }
