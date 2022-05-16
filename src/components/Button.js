@@ -7,7 +7,7 @@ function Button() {
       <button
         data-testid="button"
         onClick={() => {
-          setShowNextButton(!showNextButton);
+          setShowNextButton(true);
         }}
       >
         Click Me
