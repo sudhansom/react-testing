@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Input({ isTure }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState("y");
   return (
     <div>
       <input
