@@ -1,6 +1,7 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+//import { act } from "@testing-library/react";
 
 import Timer from "../../components/Timer";
 
@@ -55,4 +56,17 @@ it("should cleanup on being removed", () => {
     jest.advanceTimersByTime(2000);
   });
   expect(onSelect).not.toHaveBeenCalled();
+});
+
+it("should accept selections", () => {
+  const onSelect = jest.fn();
+  act(() => {
+    render(<Timer onSelect={onSelect} />, container);
+  });
+  act(() => {
+    container
+      .querySelector("[data-testid='2']")
+      .dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  expect(onSelect).toHaveBeenCalledWith(2);
 });
