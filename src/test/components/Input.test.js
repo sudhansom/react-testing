@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent, screen, getByTestId } from "@testing-library/react";
 import { act } from "@testing-library/jest-dom";
 
 import Input from "../../components/Input";
@@ -9,4 +9,9 @@ describe("Test the Input page", () => {
     const inputField = screen.getByTestId(/inputField/);
     expect(inputField).toBeTruthy();
   });
+});
+it("don't render extra div", () => {
+  const { getByTestId } = render(<Input isTrue={true} />);
+  const divs = screen.getByTestId("divToShow");
+  expect(divs).toBeTruthy();
 });

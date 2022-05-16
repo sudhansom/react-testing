@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Input({ isTure }) {
+function Input({ isTrue }) {
   const [text, setText] = useState("y");
   return (
     <div>
@@ -10,7 +10,7 @@ function Input({ isTure }) {
           setText(e.target.value);
         }}
       />
-      {isTure && <h3 data-testid="textDisplayDiv">{text}</h3>}
+      {isTrue && <div data-testid="divToShow">{text}</div>}
     </div>
   );
 }
