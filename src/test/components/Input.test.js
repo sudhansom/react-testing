@@ -18,6 +18,15 @@ it("don't render extra div", () => {
 
 it("do not render div", () => {
   const { queryByTestId } = render(<Input isTrue={false} />);
-  const div = queryByTestId("divToShow");
+  const div = screen.queryByTestId("divToShow");
   expect(div).toBeFalsy();
+});
+
+it("change in input cause change in header", () => {
+  const { getByTestId } = render(<Input isTrue={true} />);
+  const header = screen.getByTestId("divToShow");
+  expect(header.textContent).toBe("");
+  const inputField = screen.getByTestId(/inputField/);
+  fireEvent.change(inputField, { target: { value: "abc" } });
+  expect(header.textContent).toBe("abc");
 });
