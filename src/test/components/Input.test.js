@@ -15,3 +15,9 @@ it("don't render extra div", () => {
   const divs = screen.getByTestId("divToShow");
   expect(divs).toBeTruthy();
 });
+
+it("do not render div", () => {
+  const { queryByTestId } = render(<Input isTrue={false} />);
+  const div = queryByTestId("divToShow");
+  expect(div).toBeFalsy();
+});
