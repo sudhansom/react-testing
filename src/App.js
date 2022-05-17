@@ -22,7 +22,7 @@ function App() {
         }}
       />
       <hr />
-      <Input isTure={true} />
+      <Input isTrue={true} />
       <Button />
     </div>
   );

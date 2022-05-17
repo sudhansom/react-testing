@@ -25,5 +25,6 @@ it("render another button after button click", () => {
   const { getAllByTestId } = render(<Button />);
   const buttonList = screen.getAllByTestId("button");
   fireEvent.click(buttonList[0]);
-  expect(buttonList).toHaveLength(1);
+  const buttonList1 = screen.getAllByTestId("button");
+  expect(buttonList1).toHaveLength(2);
 });
